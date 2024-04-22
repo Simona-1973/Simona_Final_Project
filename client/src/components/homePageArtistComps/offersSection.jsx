@@ -239,12 +239,13 @@ export default function OffersSection() {
                       <button
                         onClick={() => {
                           handleToggleEditForm(offer._id);
-                        }}
+                        }} 
+                        className="bg-retroBlue p-1 rounded-[30px] hover:bg-blue-700 text-white px-2"
                       >
                         Edit
                       </button>
                       <button
-                        className="bg-red-700 hover:bg-red-800 text-white font-bold  px-2  rounded "
+                        className="bg-retroRed hover:bg-red-700 text-white font-bold  px-2  rounded-[30px] "
                         onClick={() => handleDelete(offer._id)}
                       >
                         Delete
