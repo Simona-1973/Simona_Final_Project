@@ -42,13 +42,12 @@ export default function Chat() {
 
         <div className=" flex justify-start ml-20 mt-6">
           <input
-            className="w-[90%] text-black border border-black rounded-[10px] p-1 pl-2"
+            className="w-[70%] bg-white text-black border border-black rounded-[10px] p-1 pl-2"
             type="text"
             name="chat"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search chat..."
-            color="white"
           />
         </div>
 

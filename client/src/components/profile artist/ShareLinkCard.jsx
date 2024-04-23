@@ -30,8 +30,8 @@ function ShareLinkCard({ onClose }) {
   }
 
   return (
-    <div  className=" fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[32%] rounded-xl p-3 bg-white border border-black border-b-4 border-r-4  z-50 transition-transform duration-800 xxs:w-[95%] xs:w-[80%] sm:w-[60%] md:w-[50%] lg:w-[40%] xl:w-[30%]">
-      <div className=" flex justify-between">
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[32%] rounded-xl p-2.5 bg-white border border-black border-b-4 border-r-4 z-50 transition-transform duration-800 xxs:w-[95%] xxs:xs:w-[80%] sm:w-[60%] md:w-[60%] lg:w-[40%] xl:w-[32%] xl:h-[29%]">
+    <div className=" flex justify-between">
         <h3 className=" text-xl font-bold">Profile sharing </h3>
         <X className=" cursor-pointer" onClick={onClose} />
       </div>
@@ -72,7 +72,7 @@ function ShareLinkCard({ onClose }) {
           </a>
           <span>Linkedin</span>
         </div>
-        <div className=" flex flex-col items-center">
+        <div className=" flex flex-col  items-center">
           <a href={twitterLink} target="_blank">
             <svg
               width="40"
@@ -121,11 +121,11 @@ function ShareLinkCard({ onClose }) {
       </div>
       <hr className=" mt-3" />
 
-      <form className="w-full mt-5">
+      <form className="w-full absolute bottom-2 p-2 ">
         <label className="cursor-pointe flex items-center">
           <span>Link</span>
           {copySuccess && (
-            <div className="absolute  right-8 transform -translate-y-1/2">
+            <div className="absolute  right-8 ml-3">
               <p className="text-retroRed">Copied</p>
             </div>
           )}

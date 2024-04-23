@@ -98,8 +98,8 @@ export default function UserContact({ connection, onClick }) {
   }, [notifications, notificationCount]);
 
   return (
-    <div className="user-contact xxs:flex xxs:justify-center  flex justify-start m-4 xxs:ml-2 xxs:gap-1 items-center gap-4 mt-7">
-      <div className={`avatar ${isOnline ? "online" : ""} `}>
+    <div className="user-contact flex justify-start m-8 ml-2 gap-4 items-center mt-7">
+    <div className={`avatar ${isOnline ? "online" : ""} `}>
         <div className="w-12 h-12 rounded-full">
           <img src={avatarImage || "../assets/avatar.svg"} alt="User Avatar" />
         </div>
@@ -107,7 +107,7 @@ export default function UserContact({ connection, onClick }) {
       <div
         onClick={onClick}
         role="button"
-        className=" flex flex-col w-full  bg-white border border-black rounded-[10px] lg:w-3/4"
+        className=" flex flex-col w-full p-1  bg-white border border-black rounded-[10px] lg:w-3/4"
         style={{ maxWidth: "80%" }}
       >
         <div
