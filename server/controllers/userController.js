@@ -159,6 +159,7 @@ export const sendConnectionRequest = async (req, res) => {
     await sender.populate("sentRequests");
     await sender.populate("connections");
     await sender.populate("pendingRequests");
+    console.log( sender)
 
       //SOCKET.IO FUNCTIONALITY
 
@@ -166,9 +167,7 @@ export const sendConnectionRequest = async (req, res) => {
         senderId,
         receiverId
       );
-  
       io.to(receiverSocketId).emit("pendingRequest", sender);
-
     res.send({
       success: true,
       sender,

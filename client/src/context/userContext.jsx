@@ -16,6 +16,7 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [forgotPassword, setForgotPasswsord] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [resetPassword, setResetPassword] = useState(false);
   const [newUser, setNewUser] = useState();
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
@@ -98,6 +99,11 @@ const UserProvider = ({ children }) => {
       );
       if (response.data.success) {
         console.log("we have sent you an email to reset you password");
+
+        setResetPassword(true);
+        setTimeout(() => {
+          setResetPassword(false);
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
@@ -462,9 +468,12 @@ const UserProvider = ({ children }) => {
 
   // Add Interests
   const addInterest = async (userId, interest) => {
-    const body =  { interest }
+    const body = { interest };
     try {
-      const response = await axios.post( baseURL + `/profile/interests/${userId}`, body);
+      const response = await axios.post(
+        baseURL + `/profile/interests/${userId}`,
+        body
+      );
       if (response.data.success) {
         setUser(response.data.user);
       }
@@ -474,7 +483,7 @@ const UserProvider = ({ children }) => {
     }
   };
   // Delete Interests
-  const deleteInterest = async (userId, interestId ) => {
+  const deleteInterest = async (userId, interestId) => {
     try {
       const response = await axios.delete(
         baseURL + `/profile/delete-interests/${userId}`,
@@ -486,35 +495,38 @@ const UserProvider = ({ children }) => {
     } catch (error) {
       console.error("Error deleting the interest", error);
     }
-  }
+  };
 
-// Add Personality
-const addPersonality = async (userId, personality) => {
-  const body =  { personality }
-  try {
-    const response = await axios.post( baseURL + `/profile/personality/${userId}`, body);
-    if (response.data.success) {
-      setUser(response.data.user);
+  // Add Personality
+  const addPersonality = async (userId, personality) => {
+    const body = { personality };
+    try {
+      const response = await axios.post(
+        baseURL + `/profile/personality/${userId}`,
+        body
+      );
+      if (response.data.success) {
+        setUser(response.data.user);
+      }
+    } catch (error) {
+      console.error("Error adding personality:", error);
+      setMessage("Failed to add personality. Please try again.");
     }
-  } catch (error) {
-    console.error("Error adding personality:", error);
-    setMessage("Failed to add personality. Please try again.");
-  }
-};
-// Delete Personality
-const deletePersonality = async (userId, personalityId ) => {
-  try {
-    const response = await axios.delete(
-      baseURL + `/profile/delete-personality/${userId}`,
-      { data: { personalityId } }
-    );
-    if (response.data.success) {
-      setUser(response.data.user);
+  };
+  // Delete Personality
+  const deletePersonality = async (userId, personalityId) => {
+    try {
+      const response = await axios.delete(
+        baseURL + `/profile/delete-personality/${userId}`,
+        { data: { personalityId } }
+      );
+      if (response.data.success) {
+        setUser(response.data.user);
+      }
+    } catch (error) {
+      console.error("Error deleting the personality", error);
     }
-  } catch (error) {
-    console.error("Error deleting the personality", error);
-  }
-}
+  };
 
   /**
    * For the brave souls who get this far: You are the chosen ones,
@@ -540,6 +552,7 @@ const deletePersonality = async (userId, personalityId ) => {
         forgotPassword,
         newUser,
         user,
+        resetPassword,
         setUser,
         setUserRole,
         userRoleChoice,
@@ -572,7 +585,6 @@ const deletePersonality = async (userId, personalityId ) => {
         deleteInterest,
         addPersonality,
         deletePersonality,
-
       }}
     >
       {children}
